@@ -1,4 +1,4 @@
-<ng-container *ngIf="ruta.submenu == 0; else submenu">
+<ng-container *ngIf="!ruta.submenu; else submenu">
   <li class="nav-item">  
     <a class="nav-link" routerLink = "/{{ruta.path}}">{{ruta.name}}</a>    
   </li>
