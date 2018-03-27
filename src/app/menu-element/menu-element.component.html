@@ -1,0 +1,22 @@
+<ng-container *ngIf="ruta.submenu == 0; else submenu">
+  <li class="nav-item">  
+    <a class="nav-link" routerLink = "/{{ruta.path}}">{{ruta.name}}</a>    
+  </li>
+</ng-container>
+
+<ng-template #submenu>
+  <li class="dropdown">
+      <!-- class="nav-link" -->
+    <a class="nav-link dropdown-toggle" href="#" role="button" 
+    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false">
+     {{ruta.name}}
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <ng-container *ngFor="let c of ruta.children">
+        <app-menu-element *ngIf="c.activo == 1" [ruta]="c"></app-menu-element>
+      </ng-container>
+    </ul>
+  </li>
+</ng-template>
