@@ -1,0 +1,78 @@
+<div class="card col-lg-10 offset-lg-1" style="border: 0px;"
+  infiniteScroll
+  [infiniteScrollDistance]="4"
+  [infiniteScrollUpDistance]="1.5"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScrollDown()">
+
+    <div class="card-block row">
+      <div class="col-6">
+        <h4 class="cardt-title">Gastos</h4>
+      </div>
+      
+      <div class="col-6">
+        <span class="float-right">
+          <a (click)="toogleChild()" class="btn btn-large btn-success">
+            <i class="fa fa-plus pull-left"></i>
+          </a>
+        </span>
+      </div>
+    </div>
+  
+    <app-gastos-new-reactive-form [showMe]="showNew" [lista]="listaGastos" (showMeChild)="escuchaEstadoHijo($event)" ></app-gastos-new-reactive-form>
+
+    <div class="card-block">
+      <table sortable-table (sorted)="onSorted($event)" class="table table-responsive table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th sortable-column="fecha" scope="col" style="width:15%;">Fecha</th>
+            <th sortable-column="idEntidad" scope="col" style="width:15%;">Entidad</th>
+            <th scope="col" style="width:40%;">Descripción</th>
+            <th sortable-column="importe" scope="col" style="width:25%;">Importe</th>
+            <th style="width:5%;">Activo</th>            
+            <th scope="col">Eliminar</th>
+            <th scope="col">Editar</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let u of listaGastos"
+              [class.selected]="u === selectedItem">
+            <th scope="row">{{u.id}}</th>
+            <td>{{u.fecha | date:'dd-MM-yyyy'}}</td>
+            <td>{{u.entidad.nombreEntidad}}</td>
+            <td>{{u.descripcion}}</td>
+            <td>{{u.importe}}</td>
+            <ng-container *ngIf="!u.activo; else otro">
+              <td>-</td>
+            </ng-container>
+            <ng-template #otro>
+              <td></td>             
+            </ng-template>
+            <td><a class="btn btn-large btn-danger" (click)="open(content,u)">
+              <i class="fa fa-times pull-left"></i> </a>
+            </td>
+            <td><a class="btn btn-large btn-primary" (click)="openDetail(u)">
+              <i class="fa fa-edit pull-left"></i> </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">¿Quieres eliminar el gasto?</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Se eliminará el registro. Este proceso no puede ser deshecho. ¿Estás seguro?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-large btn-danger" (click)="delete(selectedItem); c('Close click') ">Eliminar</button>
+    </div>
+  </ng-template>

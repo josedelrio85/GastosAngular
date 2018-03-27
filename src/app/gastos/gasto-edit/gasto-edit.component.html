@@ -1,0 +1,52 @@
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Tipo Movimiento</label>
+  <div class="col-sm-4">
+    <select class="form-control" [(ngModel)]="item.idTipoMovimiento" 
+    placeholder="Indique Tipo de Movimiento" disabled="true">
+      <option *ngFor="let i of listaTipos" value="{{i.id}}" >
+        {{i.tipoMovimiento}}
+      </option>
+    </select>
+  </div>
+
+  <label class="col-sm-2 col-form-label">Entidad</label>
+  <div class="col-sm-4">
+    <select class="form-control" [(ngModel)]="item.idEntidad" 
+    placeholder="Indique Entidad">
+      <option *ngFor="let i of listaEntidades" value="{{i.id}}" >
+        {{i.nombreEntidad}}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Fecha</label>
+  <div class="col-sm-4 input-group">
+    <input class="form-control" [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1" [(ngModel)]="item.fecha"  >
+    <owl-date-time #dtPicker1 [firstDayOfWeek]="1"></owl-date-time><!-- [pickerType]="'calendar'" -->
+  </div>
+  <label class="col-sm-2 col-form-label">Importe</label>
+  <div class="col-sm-4">
+    <input type="number" step=0.01 class="form-control" [(ngModel)]="item.importe" placeholder="Indica Importe">
+  </div>   
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Descripción</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="item.descripcion" placeholder="Indica Descripción">
+  </div>   
+</div>
+
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Activo</label>
+  <div class="col-sm-4 form-check">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="item.activo" placeholder="Activo">           
+  </div>
+  <!-- <label class="col-sm-2 col-form-label">Fijo</label>
+  <div class="col-sm-4 form-check disabled">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="item.fijo" placeholder="Fijo" >
+  </div> -->
+</div>

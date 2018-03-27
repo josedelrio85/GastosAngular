@@ -1,0 +1,15 @@
+<div class="modal-header">
+  
+  <h4 class="modal-title">Editar gasto</h4>
+  <button type="button" class="close" aria-label="Close" (click)="cierraModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body card-block" *ngIf="item">
+  <app-gasto-edit [item]="item" [listaTipos]="listaTipos" [listaEntidades]="listaEntidades" ></app-gasto-edit>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-large btn-danger" (click)="update(); cierraModal()">Guardar</button>
+</div>

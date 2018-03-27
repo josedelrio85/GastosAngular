@@ -1,0 +1,70 @@
+<div class="card-block" *ngIf="showMe">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tipo Movimiento</label>
+      <div class="col-sm-4">
+        <select class="form-control" formControlName="idTipoMovimiento" 
+        placeholder="Indique Tipo de Movimiento" >
+          <option *ngFor="let i of listaTipos" value="{{i.id}}" >
+            {{i.tipoMovimiento}}
+          </option>
+        </select>
+        <app-field-error-display [displayError]="isFieldValid('idTipoMovimiento')" errorMsg="Introduce un tipo de movimiento"></app-field-error-display>        
+      </div>
+  
+      <label class="col-sm-2 col-form-label">Entidad</label>
+      <div class="col-sm-4">
+        <select class="form-control" formControlName="idEntidad" 
+        placeholder="Indique Entidad" >
+          <option *ngFor="let i of listaEntidades" value="{{i.id}}" >
+            {{i.nombreEntidad}}
+          </option>
+        </select>
+        <app-field-error-display [displayError]="isFieldValid('idEntidad')" errorMsg="Introduce una entidad"></app-field-error-display>        
+      </div>
+    </div>
+    
+    <div class="form-group row">
+
+      <label class="col-sm-2 col-form-label">Fecha</label>
+      <div class="col-sm-4 input-group">
+        <input class="form-control" [owlDateTimeTrigger]="dtPicker1" 
+          [owlDateTime]="dtPicker1" formControlName="fecha">
+        <owl-date-time #dtPicker1 [firstDayOfWeek]="1"></owl-date-time>
+        <app-field-error-display [displayError]="isFieldValid('fecha')" errorMsg="Introduce una fecha"></app-field-error-display>        
+      </div>
+
+      <label class="col-sm-2 col-form-label">Importe</label>
+      <div class="col-sm-4" [ngClass]="displayFieldCss('importe')">
+        <input type="number" step=0.01 class="form-control" formControlName="importe" >
+        <app-field-error-display [displayError]="isFieldValid('importe')" errorMsg="Introduce importe"></app-field-error-display>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Descripción</label>
+      <div class="col-sm-10" [ngClass]="displayFieldCss('descripcion')">
+        <input type="text" class="form-control" formControlName="descripcion" >
+        <!-- <app-field-error-display [displayError]="isFieldValid('descripcion')" errorMsg="Introduce importe"></app-field-error-display> -->
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Activo</label>
+      <div class="col-sm-4 form-check">
+          <input type="checkbox" class="form-check-input" formControlName="activo" placeholder="Activo">           
+      </div>
+      <!-- <label class="col-sm-2 col-form-label">Fijo</label>
+      <div class="col-sm-4 form-check disabled">
+          <input type="checkbox" class="form-check-input" formControlName="fijo" placeholder="Fijo">           
+      </div> -->
+    </div>
+
+    <!-- <p>Form value: {{ form.value | json }}</p>
+    <p>Form value: {{ form.status | json }}</p> -->
+
+    <div class="form-group float-right">
+      <button type="submit" class="btn btn-secondary">Guardar</button>
+    </div>
+  </form>
+</div>
