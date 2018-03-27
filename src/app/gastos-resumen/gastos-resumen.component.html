@@ -1,0 +1,59 @@
+<div class="card col-lg-10 offset-lg-1" style="border: 0px;">
+
+    <div class="card-block row">
+      <div class="col-6">
+        <h4 class="cardt-title">Resumen Gastos</h4>
+      </div>
+    </div>
+       
+    <div class="card-block row">
+      <label class="col-sm-2 col-form-label">Año</label>
+      <div class="col-sm-4">
+        <select class="form-control" placeholder="Indica año" [(ngModel)]="selectorAnho" (ngModelChange)="getFecha()">
+          <option *ngFor="let i of listaAnho" [ngValue]="i.id" >
+            {{i.id}}
+          </option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="card-block row">
+      <ng-container *ngFor="let el of listaResumen">
+        
+        <div class="col-lg-4" style="margin-top:25px">
+          <h4 class="cardt-title">{{el.mes | numberToMonth }}</h4>
+          <table sortable-table class="table table-responsive table-striped table-hover">
+            <thead>
+              <tr>
+                <th sortable-column="entidad" style="width:75%;">Entidad</th>
+                <th sortable-column="total" >Total</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let gastos of el.elementos"
+                [routerLink]="['/gastosMes']" 
+                [queryParams]="{id : el.mes, anho: selectorAnho}">
+                  <td>{{gastos.entidad}}</td>
+                  <td style="text-align: right;">{{gastos.total | number:'1.2-2' }}</td>
+              </tr>
+              <tr>
+                <td>TOTAL</td>
+                <td style="text-align: right;">{{el.total | number:'1.2-2' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>      
+        <div class="col-lg-8" style="margin-top:25px">
+
+        <app-chart-component *ngIf="el.chart" 
+        [results]="el.chart" 
+        [arcWidth]=1 >
+    </app-chart-component> 
+  </div>      
+
+       
+
+      </ng-container>
+    </div>
+  </div>
+  
