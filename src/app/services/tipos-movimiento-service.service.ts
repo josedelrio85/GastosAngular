@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { TiposMovimiento } from '../Modelos/TiposMovimiento';
 
 import { map, tap, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
@@ -16,7 +17,7 @@ export class TiposMovimientoService {
 
   constructor(private httpService:HttpClient) { }
 
-  private url = 'http://localhost:64006/api/TiposMovimiento';
+  private url = environment.apiUrl + 'TiposMovimiento';
  
   getTiposMovimiento(): Observable<TiposMovimiento[]> {
     return this.httpService.get<TiposMovimiento[]>(this.url);

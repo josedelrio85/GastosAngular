@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
@@ -16,7 +17,7 @@ httpOptions.headers.append('Accept', '*/*');
 @Injectable()
 export class FijosMesService {
 
-  private url = "http://localhost:64006/api/FijosMes";
+  private url = environment.apiUrl + 'FijosMes';   
   
   constructor(private httpService: HttpClient) { }
   

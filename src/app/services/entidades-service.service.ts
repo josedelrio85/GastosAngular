@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Entidades } from '../Modelos/Entidades';
 
 import { map, tap, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
@@ -16,7 +17,7 @@ export class EntidadesService {
 
   constructor(private httpService:HttpClient) { }
 
-  private url = 'http://localhost:64006/api/entidades';
+  private url = environment.apiUrl + 'entidades';
 
   getEntidades(): Observable<Entidades[]> {
     return this.httpService.get<Entidades[]>(this.url);

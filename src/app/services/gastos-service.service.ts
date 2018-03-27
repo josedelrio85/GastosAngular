@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Gastos } from '../Modelos/Gastos';
 
 import { map, tap, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
@@ -17,7 +18,7 @@ export class GastosService {
 
   constructor(private httpService:HttpClient) { }
 
-  private url = 'http://localhost:64006/api/gastos';
+  private url = environment.apiUrl + 'gastos'; 
 
   getGastos(): Observable<Gastos[]> {
     return this.httpService.get<Gastos[]>(this.url);
