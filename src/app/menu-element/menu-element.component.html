@@ -1,6 +1,6 @@
 <ng-container *ngIf="!ruta.submenu; else submenu">
   <li class="nav-item">  
-    <a class="nav-link" routerLink = "/{{ruta.path}}">{{ruta.name}}</a>    
+    <a class="nav-link" routerLink="/{{ruta.path}}" (click)="collapseMenu()">{{ruta.name}}</a>    
   </li>
 </ng-container>
 
@@ -15,7 +15,7 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <ng-container *ngFor="let c of ruta.children">
-        <app-menu-element *ngIf="c.activo == 1" [ruta]="c"></app-menu-element>
+        <app-menu-element *ngIf="c.activo == 1" [ruta]="c" [targetNavbar]="targetNavbar"></app-menu-element>
       </ng-container>
     </ul>
   </li>
