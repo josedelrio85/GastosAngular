@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouteLink } from '../Modelos/RouteLink';
 
@@ -11,8 +11,13 @@ import { RouteLink } from '../Modelos/RouteLink';
 export class MenuElementComponent implements OnInit {
 
   @Input() ruta: RouteLink;
+  @Input() targetNavbar: ElementRef;
   
   constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  collapseMenu(){
+    this.targetNavbar.nativeElement.className = "navbar-collapse collapse";
+  }
 }
