@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import './styles/bootstrap-3.3.7-dist/css/bootstrap.min.css'; */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+
+.cdk-overlay-container {
+    position: fixed !important;
+    z-index: 2000 !important;
+}
+
+
+.advanced-pie-legend .legend-items-container .legend-items{
+    white-space: inherit !important;
+}
+
+
+.advanced-pie-legend .legend-items-container .legend-items .legend-item{
+    margin-bottom: 30px;
+}
