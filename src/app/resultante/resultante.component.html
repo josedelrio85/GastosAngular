@@ -1,0 +1,57 @@
+<div class="card col-lg-10 offset-lg-1" style="border: 0px;">
+
+    <div class="card-block row">
+      <div class="col-6">
+        <h4 class="cardt-title">Resultante</h4>
+      </div>
+    </div>
+       
+    <div class="card-block row">
+      <label class="col-sm-2 col-form-label">Año</label>
+      <div class="col-sm-4">
+        <select class="form-control" placeholder="Indica año" [(ngModel)]="selectorAnho" (ngModelChange)="getFecha()">
+          <option *ngFor="let i of listaAnho" [ngValue]="i.id" >
+            {{i.id}}
+          </option>
+        </select>
+      </div>
+      <div class="col-lg-6">
+        <app-line-chart [results]="grafica" ></app-line-chart>
+      </div>
+    </div>
+
+    <div class="card-block row">
+      <ng-container *ngFor="let el of listaResumen">
+        
+        <div class="col-lg-6" style="margin-top:25px">
+          <h4 class="cardt-title">{{el.mes | numberToMonth }}</h4>
+          <table sortable-table class="table table-responsive table-striped table-hover">
+            <thead>
+              <tr>
+                <th sortable-column="entidad" style="width:75%;">Tipo Movimiento</th>
+                <th sortable-column="total" >Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of el.elementos">
+                <tr>
+                  <td>{{item.tipo}}</td>
+                  <td style="text-align: right;">{{item.valor | number:'1.2-2' }}</td>
+                </tr>
+              </ng-container>
+              <tr>
+                  <td>TOTAL</td>
+                  <td style="text-align: right;">{{el.resultante | number:'1.2-2' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>      
+        
+        <div class="col-lg-6" style="margin-top:25px">
+          <app-vertical-bar-chart *ngIf="el.chart" [results]="el.chart" ></app-vertical-bar-chart>
+        </div>            
+
+      </ng-container>
+    </div>
+  </div>
+  
