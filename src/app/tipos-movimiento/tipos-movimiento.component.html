@@ -1,0 +1,65 @@
+<!-- <app-cliente-search [lista]="listaClientes"></app-cliente-search> -->
+
+<div class="card col-lg-8 offset-lg-2" style="border: 0px;">
+
+  <div class="card-block row">
+    <div class="col-6">
+      <h4 class="cardt-title">Tipos Movimiento</h4>
+    </div>
+    
+    <div class="col-6">
+      <span class="float-right">
+        <a (click)="toogleChild()" class="btn btn-large btn-success">
+          <i class="fa fa-plus pull-left"></i>
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <div class="card-block">
+    <table class="table table-responsive table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" style="width:100%;">Nombre</th>
+          <th scope="col">Eliminar</th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let u of listaTipos"
+            [class.selected]="u === selectedTipo">
+          <th scope="row">{{u.id}}</th>
+          <td>{{u.tipoMovimiento}}</td>
+          <td><a class="btn btn-large btn-danger" (click)="open(content,u)">
+            <i class="fa fa-times pull-left"></i> </a>
+          </td>
+          <td><a class="btn btn-large btn-primary" (click)="onSelect(u)">
+            <i class="fa fa-edit pull-left"></i> </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-tipos-detail [item]="selectedTipo" [showMe]="showDetail"></app-tipos-detail>
+  <app-tipos-new [showMe]="showNew" [lista]="listaTipos"></app-tipos-new>
+
+</div>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">¿Quieres eliminar el tipo?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Se eliminará el registro. Este proceso no puede ser deshecho. ¿Estás seguro?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-large btn-danger" (click)="delete(selectedTipo); c('Close click') ">Eliminar</button>
+  </div>
+</ng-template>
