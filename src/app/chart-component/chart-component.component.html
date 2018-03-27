@@ -1,0 +1,22 @@
+<!-- <ngx-charts-pie-chart
+  [results]="results"
+  [view]="view"
+  [scheme]="colorScheme"
+  [explodeSlices]="explodeSlices"
+  [labels]="labels"
+  [legend]="legend"
+  [doughnut]="doughnut"
+  [gradient]="gradient"
+  [arcWidth]="arcWidth"
+  (select)="onSelect($event)">
+</ngx-charts-pie-chart> -->
+
+<ngx-charts-advanced-pie-chart
+  [results]="results"
+  [view]="view"
+  [scheme]="colorScheme"
+  [label]="labels"
+  [gradient]="gradient"
+  [tooltipDisabled]="false"
+  (select)="onSelect($event)">
+</ngx-charts-advanced-pie-chart>
