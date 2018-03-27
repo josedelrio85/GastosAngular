@@ -19,6 +19,8 @@ export class VerticalBarChartComponent implements OnInit {
   @Input() xAxisLabel : string = '';
   @Input() yAxisLabel : string = '';
 
+  showLegend: boolean = true;
+
   colorScheme = {
     domain: [coloresEntidad.colorEnt2,
             coloresEntidad.colorEnt11]
