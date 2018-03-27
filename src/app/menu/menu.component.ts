@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouteLink } from '../Modelos/RouteLink';
 
@@ -9,11 +9,16 @@ import { RouteLink } from '../Modelos/RouteLink';
 })
 export class MenuComponent implements OnInit {
 
+  @ViewChild('navbarN') navbarN: ElementRef;
+  divNavbar: ElementRef;
+
   routes = new Array<RouteLink>();
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.divNavbar = this.navbarN;
+
     for (var i = 0; i < this.router.config.length; i++) {
       var routePath:string = this.router.config[i].path;
       var namePath:string = this.router.config[i].data.name;
