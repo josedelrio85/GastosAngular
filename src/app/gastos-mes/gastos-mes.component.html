@@ -1,0 +1,55 @@
+<div class="card col-lg-10 offset-lg-1" style="border: 0px;">
+
+  <div class="card-block row">
+    <div class="col-6">
+      <h4 class="cardt-title">Gastos</h4>
+    </div>
+  </div>
+
+  <div class="card-block row">
+    <label class="col-sm-2 col-form-label">Mes</label>
+    <div class="col-sm-4">
+      <select class="form-control" placeholder="Indica Mes" [(ngModel)]="selectorMes" (ngModelChange)="getFecha()">
+        <option *ngFor="let i of meses | enumToSelector" [ngValue]="i.indice">
+          {{i.valor}}
+        </option>
+      </select>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Año</label>
+    <div class="col-sm-4">
+      <select class="form-control" placeholder="Indica año" [(ngModel)]="selectorAnho" (ngModelChange)="getFecha()">
+        <option *ngFor="let i of listaAnho" [ngValue]="i.id" >
+          {{i.id}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="card-block row">
+
+    <ng-container *ngFor="let ent of listaEntidades">
+      <div class="col-lg-6" style="margin-top:25px">
+        <h4 class="cardt-title">{{ent.nombreEntidad}}</h4>
+        <table sortable-table (sorted)="onSorted($event)" class="table table-responsive table-striped table-hover">
+          <thead>
+            <tr>
+              <th sortable-column="fecha" scope="col">Fecha</th>
+              <th scope="col" style="width:75%;">Descripción</th>
+              <th sortable-column="importe" scope="col" >Importe</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let u of listaGastos | groupBy: 'idEntidad': ent.id">
+              <td>{{u.fecha | date:'dd-MM-yyyy'}}</td>
+              <td>{{u.descripcion}}</td>
+              <td style="text-align: right;">{{u.importe | number:'1.2-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </ng-container>
+  </div>
+</div>
