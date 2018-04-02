@@ -17,4 +17,8 @@ export class GastoEditComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  checkToNumber(){
+    this.item.activo == 0 ? this.item.activo = 1 : this.item.activo = 0;
+  }
 }

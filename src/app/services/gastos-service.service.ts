@@ -29,6 +29,7 @@ export class GastosService {
   }
 
   updateGasto(item: Gastos): void { 
+    // console.log(item)
     this.httpService.put<Gastos>(`${this.url}/${item.id}`, item, httpOptions)
     .pipe(tap(
       (a: Gastos) => {
