@@ -15,3 +15,48 @@
     margin-bottom: 30px;
 }
 
+/* 361px */
+@media only screen and (max-width: 454px) {
+
+    ngx-charts-chart > div{
+        width:0px !important;
+    }
+
+    ngx-charts-advanced-pie-chart > div{ 
+        width:auto !important;
+        height:auto !important;      
+    }
+
+    .advanced-pie-legend-wrapper, .advanced-pie-legend, svg.ngx-charts{
+        width:300px !important;
+    }
+    
+    .advanced-pie-legend-wrapper{
+        height: 500px !important;
+    }
+
+    svg > g {
+        transform: translate(113, 100);
+    }
+}
+
+/*362*/
+@media only screen and (max-width: 721px) and (min-width: 454px) {
+
+    ngx-charts-chart > div{
+        width:0px !important;
+    }
+
+    ngx-charts-advanced-pie-chart > div{ 
+        width:auto !important;
+        height:auto !important;      
+    }
+
+    .advanced-pie-legend-wrapper, .advanced-pie-legend, svg.ngx-charts{
+        width:400px !important;
+    }
+
+    .advanced-pie-legend-wrapper{
+        height: 500px !important;
+    }
+}
