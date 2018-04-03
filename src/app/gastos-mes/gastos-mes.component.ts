@@ -30,7 +30,7 @@ export class GastosMesComponent extends GastosComponent implements OnInit {
     modalService: NgbModal, 
     private entidadesService: EntidadesService,
     private _activatedRoute: ActivatedRoute) { 
-    
+
       super(gastosService, modalService);
   }
 

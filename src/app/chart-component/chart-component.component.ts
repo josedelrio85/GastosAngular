@@ -42,8 +42,6 @@ export class ChartComponentComponent implements OnInit {
   
   ngOnInit() {}
 
-  onSelect(event) {
-    // console.log(event);
-  }
+  onSelect(event) {}
 }
 

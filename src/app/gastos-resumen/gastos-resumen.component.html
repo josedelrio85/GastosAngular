@@ -1,7 +1,7 @@
-<div class="card col-lg-10 offset-lg-1" style="border: 0px;">
+<div class="card col-12 col-lg-10 offset-lg-1" style="border: 0px;">
 
     <div class="card-block row">
-      <div class="col-6">
+      <div class="col-lg-6 col-12">
         <h4 class="cardt-title">Resumen Gastos</h4>
       </div>
     </div>
@@ -20,12 +20,12 @@
     <div class="card-block row">
       <ng-container *ngFor="let el of listaResumen">
         
-        <div class="col-lg-4" style="margin-top:25px">
+        <div class="col-lg-4 col-sm-12 col-12" style="margin-top:25px">
           <h4 class="cardt-title">{{el.mes | numberToMonth }}</h4>
           <table sortable-table class="table table-responsive table-striped table-hover">
             <thead>
               <tr>
-                <th sortable-column="entidad" style="width:75%;">Entidad</th>
+                <th sortable-column="entidad" style="width:100%;">Entidad</th>
                 <th sortable-column="total" >Total</th>
               </tr>
             </thead>
