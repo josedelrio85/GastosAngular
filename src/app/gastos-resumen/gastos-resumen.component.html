@@ -35,8 +35,10 @@
               [routerLink]="['/gastosMes']" 
               [queryParams]="{id : el.mes, anho: selectorAnho}">
                 <td>{{gastos.entidad}}</td>
-                <td style="text-align: right;">{{gastos.total | number:'1.2-2' }}</td>
-                <td style="text-align: right;">{{gastos.prevision | number:'1.2-2' }}</td>
+                <td style="text-align: right;"
+                  [ngStyle]="{'color':gastos.colorTotal}">{{gastos.total | number:'1.2-2' }}</td>
+                <td style="text-align: right;"
+                  [ngStyle]="{'color':gastos.colorPrevision}">{{gastos.prevision | number:'1.2-2' }}</td>
             </tr>
             <tr>
               <td>TOTAL</td>
