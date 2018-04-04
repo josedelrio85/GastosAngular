@@ -27,6 +27,7 @@
             <tr>
               <th sortable-column="entidad" style="width:100%;">Entidad</th>
               <th sortable-column="total" >Total</th>
+              <th sortable-column="total" >Previsión</th>
             </tr>
           </thead>
           <tbody >
@@ -34,24 +35,26 @@
               [routerLink]="['/gastosMes']" 
               [queryParams]="{id : el.mes, anho: selectorAnho}">
                 <td>{{gastos.entidad}}</td>
-                <td style="text-align: right;">{{gastos.total | number:'1.2-2' }}</td>
+                <td style="text-align: right;"
+                  [ngStyle]="{'color':gastos.colorTotal}">{{gastos.total | number:'1.2-2' }}</td>
+                <td style="text-align: right;"
+                  [ngStyle]="{'color':gastos.colorPrevision}">{{gastos.prevision | number:'1.2-2' }}</td>
             </tr>
             <tr>
               <td>TOTAL</td>
               <td style="text-align: right;">{{el.total | number:'1.2-2' }}</td>
+              <td style="text-align: right;">{{el.totalPrev | number:'1.2-2' }}</td>
             </tr>
           </tbody>
         </table>
       </div>      
       <div class="col-lg-8" style="margin-top:25px">
 
-      <app-chart-component *ngIf="el.chart" 
-      [results]="el.chart" 
-      [arcWidth]=1 >
-  </app-chart-component> 
-</div>      
-
-     
+        <app-chart-component *ngIf="el.chart" 
+            [results]="el.chart" 
+            [arcWidth]=1 >
+        </app-chart-component> 
+      </div>      
 
     </ng-container>
   </div>
