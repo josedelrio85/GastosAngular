@@ -59,6 +59,10 @@ export class GastosService {
     return this.httpService.get<Gastos[]>(`${this.url}/gastosMes/${fecha}`);
   }
 
+  getGastosFiltro(fecha: any): Observable<Gastos[]> {
+    return this.httpService.post<any[]>(`${this.url}/FiltroPost`, fecha, httpOptions);
+  }
+
   getGastosResumen(anho?: number): Observable<any[]> {
     let url = this.url + "/resumenMes/ ";
     
